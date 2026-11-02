@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ladle Loan | Smart & Transparent Financing</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --primary: #0f172a;
+        --primary-accent: #2563eb;
+        --accent-hover: #1d4ed8;
+        --secondary: #10b981;
+        --bg-light: #f8fafc;
+        --card-bg: #ffffff;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --border-color: #e2e8f0;
+        --shadow:
+          0 10px 25px -5px rgba(15, 23, 42, 0.08),
+          0 8px 10px -6px rgba(15, 23, 42, 0.04);
+        --radius: 14px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-light);
+        color: var(--text-main);
+        line-height: 1.6;
+      }
+
+      /* Navigation */
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(8px);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .navbar {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.1rem 1.5rem;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--primary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .logo span {
+        color: var(--primary-accent);
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.8rem;
+        align-items: center;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--primary-accent);
+      }
+      .btn {
+        padding: 0.65rem 1.3rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.2s ease;
+        border: none;
+      }
+      .btn-primary {
+        background-color: var(--primary-accent);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background-color: var(--accent-hover);
+        transform: translateY(-1px);
+      }
+
+      /* Hero Section */
+      .hero {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+        text-align: center;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #eff6ff;
+        color: var(--primary-accent);
+        padding: 0.4rem 1rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+        border: 1px solid #dbeafe;
+      }
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--primary);
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+      .hero p {
+        max-width: 650px;
+        margin: 0 auto 2rem;
+        color: var(--text-muted);
+        font-size: 1.15rem;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 2.5rem 1.5rem;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+      .section-title h2 {
+        font-size: 2.1rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+      .section-title p {
+        color: var(--text-muted);
+      }
+
+      /* Loan Categories Grid */
+      .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+      .loan-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius);
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+      }
+      .loan-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+      .card-icon {
+        width: 55px;
+        height: 55px;
+        border-radius: 12px;
+        background: #eff6ff;
+        color: var(--primary-accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .loan-card h3 {
+        font-size: 1.35rem;
+        margin-bottom: 0.5rem;
+      }
+      .rate-badge {
+        display: inline-block;
+        background: #ecfdf5;
+        color: var(--secondary);
+        font-weight: 700;
+        padding: 0.3rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+      }
+      .features-list {
+        list-style: none;
+        margin: 1.2rem 0;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+      .features-list li {
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .features-list li i {
+        color: var(--secondary);
+      }
+
+      /* Calculator & Forms Section */
+      .two-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+        align-items: start;
+      }
+      @media (max-width: 868px) {
+        .two-column {
+          grid-template-columns: 1fr;
+        }
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+      }
+
+      .box-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius);
+        padding: 2.2rem;
+        box-shadow: var(--shadow);
+      }
+
+      /* Form & Sliders */
+      .form-group {
+        margin-bottom: 1.4rem;
+      }
+      .form-group label {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+      }
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        font-size: 1rem;
+        outline: none;
+        transition: border 0.2s;
+      }
+      .form-group input:focus,
+      .form-group select:focus {
+        border-color: var(--primary-accent);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+      }
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--primary-accent);
+        cursor: pointer;
+      }
+
+      /* Calculator Result Card */
+      .calc-results {
+        background: #0f172a;
+        color: white;
+        border-radius: 12px;
+        padding: 1.6rem;
+        margin-top: 1.5rem;
+      }
+      .calc-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.8rem;
+        font-size: 0.95rem;
+        color: #94a3b8;
+      }
+      .calc-row.total {
+        border-top: 1px solid #334155;
+        padding-top: 0.8rem;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #38bdf8;
+        margin-bottom: 0;
+      }
+
+      /* Status Alert */
+      .status-box {
+        margin-top: 1.5rem;
+        padding: 1.2rem;
+        border-radius: 8px;
+        display: none;
+      }
+      .status-box.success {
+        background: #ecfdf5;
+        border: 1px solid #a7f3d0;
+        color: #065f46;
+      }
+
+      footer {
+        background: #0b1120;
+        color: #94a3b8;
+        text-align: center;
+        padding: 2.5rem 1rem;
+        margin-top: 5rem;
+        border-top: 1px solid #1e293b;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header>
+      <div class="navbar">
+        <a href="#" class="logo">
+          <i class="fa-solid fa-coins"></i> Ladle<span>Loan</span>
+        </a>
+        <div class="nav-links">
+          <a href="#categories">Loan Options</a>
+          <a href="#calculator">EMI Calculator</a>
+          <a href="#apply">Apply</a>
+          <a href="#track">Track Status</a>
+          <a href="#apply" class="btn btn-primary">Get Started</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-badge">
+        <i class="fa-solid fa-bolt"></i> Low Interest Rates & Fast Approval
+      </div>
+      <h1>
+        Modern Lending Made Simple with
+        <span style="color: #2563eb">Ladle Loan</span>
+      </h1>
+      <p>
+        Compare loan options, calculate your exact monthly EMI, submit
+        applications, and track decisions online with zero hassle.
+      </p>
+      <a
+        href="#apply"
+        class="btn btn-primary"
+        style="padding: 0.9rem 2rem; font-size: 1.05rem"
+        >Apply for a Loan</a
+      >
+    </section>
+
+    <!-- Loan Categories -->
+    <div class="container" id="categories">
+      <div class="section-title">
+        <h2>Tailored Loan Categories</h2>
+        <p>Flexible loan packages designed to suit your financial goals.</p>
+      </div>
+
+      <div class="categories-grid">
+        <!-- Personal Loan -->
+        <div class="loan-card">
+          <div class="card-icon"><i class="fa-solid fa-user-tie"></i></div>
+          <h3>Personal Loan</h3>
+          <span class="rate-badge">From 10.5% p.a.</span>
+          <p>
+            Instant financial support for personal needs, medical expenses, or
+            travel.
+          </p>
+          <ul class="features-list">
+            <li>
+              <i class="fa-solid fa-check-circle"></i> Loans up to $50,000
+            </li>
+            <li>
+              <i class="fa-solid fa-check-circle"></i> Tenure: Up to 5 Years
+            </li>
+            <li><i class="fa-solid fa-check-circle"></i> Minimal Paperwork</li>
+          </ul>
+          <a
+            href="#apply"
+            class="btn btn-primary"
+            style="width: 100%; text-align: center"
+            >Apply Now</a
+          >
+        </div>
+
+        <!-- Home Loan -->
+        <div class="loan-card">
+          <div class="card-icon"><i class="fa-solid fa-house-chimney"></i></div>
+          <h3>Home Loan</h3>
+          <span class="rate-badge">From 8.2% p.a.</span>
+          <p>
+            Turn your dream home into reality with low rates and easy repayment
+            schedules.
+          </p>
+          <ul class="features-list">
+            <li>
+              <i class="fa-solid fa-check-circle"></i> Loans up to $500,000
+            </li>
+            <li>
+              <i class="fa-solid fa-check-circle"></i> Tenure: Up to 30 Years
+            </li>
+            <li>
+              <i class="fa-solid fa-check-circle"></i> Zero Prepayment Penalty
+            </li>
+          </ul>
+          <a
+            href="#apply"
+            class="btn btn-primary"
+            style="width: 100%; text-align: center"
+            >Apply Now</a
+          >
+        </div>
+
+        <!-- Education Loan -->
+        <div class="loan-card">
+          <div class="card-icon">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <h3>Education Loan</h3>
+          <span class="rate-badge">From 7.5% p.a.</span>
+          <p>
+            Invest in higher studies in top universities with student-friendly
+            grace periods.
+          </p>
+          <ul class="features-list">
+            <li>
+              <i class="fa-solid fa-check-circle"></i> Loans up to $100,000
+            </li>
+            <li>
+              <i class="fa-solid fa-check-circle"></i> Tenure: Up to 15 Years
+            </li>
+            <li><i class="fa-solid fa-check-circle"></i> Moratorium Support</li>
+          </ul>
+          <a
+            href="#apply"
+            class="btn btn-primary"
+            style="width: 100%; text-align: center"
+            >Apply Now</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive EMI Calculator & Application Form -->
+    <div class="container" id="calculator">
+      <div class="two-column">
+        <!-- EMI Calculator -->
+        <div class="box-card">
+          <h2 style="margin-bottom: 1.5rem">
+            <i class="fa-solid fa-calculator" style="color: #2563eb"></i> EMI
+            Calculator
+          </h2>
+
+          <div class="form-group">
+            <label
+              >Loan Amount ($):
+              <span id="amountVal" style="color: #2563eb; font-weight: 700"
+                >$25,000</span
+              ></label
+            >
+            <input
+              type="range"
+              id="amount"
+              min="1000"
+              max="200000"
+              step="1000"
+              value="25000"
+              oninput="calculateEMI()"
+            />
+          </div>
+
+          <div class="form-group">
+            <label
+              >Annual Interest Rate (%):
+              <span id="rateVal" style="color: #2563eb; font-weight: 700"
+                >9.5%</span
+              ></label
+            >
+            <input
+              type="range"
+              id="rate"
+              min="5"
+              max="20"
+              step="0.1"
+              value="9.5"
+              oninput="calculateEMI()"
+            />
+          </div>
+
+          <div class="form-group">
+            <label
+              >Tenure (Years):
+              <span id="tenureVal" style="color: #2563eb; font-weight: 700"
+                >3 Years</span
+              ></label
+            >
+            <input
+              type="range"
+              id="tenure"
+              min="1"
+              max="15"
+              step="1"
+              value="3"
+              oninput="calculateEMI()"
+            />
+          </div>
+
+          <div class="calc-results">
+            <div class="calc-row">
+              <span>Principal Amount</span>
+              <span id="resPrincipal">$25,000</span>
+            </div>
+            <div class="calc-row">
+              <span>Total Interest</span>
+              <span id="resInterest">$3,842</span>
+            </div>
+            <div class="calc-row total">
+              <span>Monthly EMI</span>
+              <span id="resEMI">$801 / mo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Application Form -->
+        <div class="box-card" id="apply">
+          <h2 style="margin-bottom: 1.5rem">
+            <i class="fa-solid fa-file-pen" style="color: #2563eb"></i> Submit
+            Application
+          </h2>
+
+          <form id="loanForm" onsubmit="submitApplication(event)">
+            <div class="form-group">
+              <label>Full Legal Name</label>
+              <input
+                type="text"
+                id="applicantName"
+                placeholder="e.g. Sanjeev Bheemisetty"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Email Address</label>
+              <input
+                type="email"
+                id="applicantEmail"
+                placeholder="name@example.com"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Select Loan Type</label>
+              <select id="loanType" required>
+                <option value="Personal Loan">Personal Loan (10.5%)</option>
+                <option value="Home Loan">Home Loan (8.2%)</option>
+                <option value="Education Loan">Education Loan (7.5%)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Desired Loan Amount ($)</label>
+              <input
+                type="number"
+                id="desiredAmount"
+                placeholder="e.g. 25000"
+                min="500"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="width: 100%; padding: 0.85rem"
+            >
+              Submit Application
+            </button>
+          </form>
+
+          <div id="submitResult" class="status-box"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Lookup Section -->
+    <div class="container" id="track" style="margin-top: 2rem">
+      <div
+        class="box-card"
+        style="max-width: 650px; margin: auto; text-align: center"
+      >
+        <h2>
+          <i class="fa-solid fa-magnifying-glass" style="color: #2563eb"></i>
+          Track Application Status
+        </h2>
+        <p style="color: #64748b; margin-bottom: 1.5rem">
+          Enter your reference ID below to view your real-time approval status.
+        </p>
+
+        <div style="display: flex; gap: 0.5rem; justify-content: center">
+          <input
+            type="text"
+            id="trackRef"
+            placeholder="e.g., LL-2025-4819"
+            style="
+              max-width: 350px;
+              padding: 0.75rem 1rem;
+              border: 1px solid #cbd5e1;
+              border-radius: 8px;
+            "
+          />
+          <button class="btn btn-primary" onclick="trackStatus()">
+            Check Status
+          </button>
+        </div>
+
+        <div
+          id="trackResult"
+          style="margin-top: 1.5rem; text-align: left; display: none"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Footer with Academic Details -->
+    <footer>
+      <p><strong>Ladle Loan</strong> — Academic Prototype Mini Project</p>
+      <p style="font-size: 0.9rem; margin-top: 0.5rem">
+        Student: BHEEMISETTY VENKATA NAGA LAKSHMI SANJEEV | Roll: 25CS003708 |
+        Branch: CSE (AI&ML)
+      </p>
+    </footer>
+
+    <!-- Dynamic Logic (EMI + Application Store + Tracking) -->
+    <script>
+      // EMI Calculation
+      function calculateEMI() {
+        const P = parseFloat(document.getElementById("amount").value);
+        const annualRate = parseFloat(document.getElementById("rate").value);
+        const tenureYears = parseFloat(document.getElementById("tenure").value);
+
+        document.getElementById("amountVal").innerText =
+          "$" + P.toLocaleString();
+        document.getElementById("rateVal").innerText = annualRate + "%";
+        document.getElementById("tenureVal").innerText =
+          tenureYears + (tenureYears > 1 ? " Years" : " Year");
+
+        const r = annualRate / 12 / 100;
+        const n = tenureYears * 12;
+
+        const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+        const totalRepay = emi * n;
+        const totalInterest = totalRepay - P;
+
+        document.getElementById("resPrincipal").innerText =
+          "$" + Math.round(P).toLocaleString();
+        document.getElementById("resInterest").innerText =
+          "$" + Math.round(totalInterest).toLocaleString();
+        document.getElementById("resEMI").innerText =
+          "$" + Math.round(emi).toLocaleString() + " / mo";
+      }
+
+      // Initialize Calculator on load
+      calculateEMI();
+
+      // Application Submission (Local Storage Fallback for zero errors online)
+      function submitApplication(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("applicantName").value;
+        const email = document.getElementById("applicantEmail").value;
+        const type = document.getElementById("loanType").value;
+        const amount = document.getElementById("desiredAmount").value;
+
+        // Generate realistic reference ID
+        const refNumber = "LL-2025-" + Math.floor(1000 + Math.random() * 9000);
+
+        // Save record in browser storage
+        const record = {
+          ref: refNumber,
+          name: name,
+          email: email,
+          type: type,
+          amount: amount,
+          status: "Under Review",
+          date: new Date().toLocaleDateString(),
+        };
+        localStorage.setItem(refNumber, JSON.stringify(record));
+
+        // Display Confirmation
+        const resultBox = document.getElementById("submitResult");
+        resultBox.className = "status-box success";
+        resultBox.style.display = "block";
+        resultBox.innerHTML = `
+        <h4 style="margin-bottom: 0.4rem;"><i class="fa-solid fa-circle-check"></i> Application Submitted!</h4>
+        <p>Your unique application reference number is: <strong style="color: #1e40af;">${refNumber}</strong></p>
+        <p style="font-size: 0.85rem; margin-top: 0.3rem;">Please save this reference number to track your approval status below.</p>
+      `;
+
+        document.getElementById("loanForm").reset();
+      }
+
+      // Status Tracking
+      function trackStatus() {
+        const refInput = document.getElementById("trackRef").value.trim();
+        const trackBox = document.getElementById("trackResult");
+
+        if (!refInput) {
+          alert("Please enter your Reference Number.");
+          return;
+        }
+
+        const recordStr = localStorage.getItem(refInput);
+        trackBox.style.display = "block";
+
+        if (recordStr) {
+          const item = JSON.parse(recordStr);
+          trackBox.innerHTML = `
+          <div style="background: #f1f5f9; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #10b981;">
+            <p><strong>Reference:</strong> ${item.ref}</p>
+            <p><strong>Applicant Name:</strong> ${item.name}</p>
+            <p><strong>Loan Type:</strong> ${item.type} ($${Number(item.amount).toLocaleString()})</p>
+            <p><strong>Application Date:</strong> ${item.date}</p>
+            <p style="margin-top: 0.5rem;"><strong>Current Status:</strong> <span style="background: #fef3c7; color: #b45309; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 700;">${item.status}</span></p>
+          </div>
+        `;
+        } else {
+          trackBox.innerHTML = `
+          <div style="background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; padding: 1rem; border-radius: 8px;">
+            <i class="fa-solid fa-triangle-exclamation"></i> No application found matching Reference: <strong>${refInput}</strong>. Please check the ID or submit a new form.
+          </div>
+        `;
+        }
+      }
+    </script>
+  </body>
+</html>
