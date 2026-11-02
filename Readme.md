@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+
 # Ladle Loan — Modern Loan Management & EMI Portal
+
+GitHub README content>>>>>>> main
 
 > An academic prototype web application engineered for loan comparison, real-time monthly EMI calculation, applicant data capture, and reference-based status tracking.
 
@@ -28,4 +32,8 @@
 
 - **Frontend:** Semantic HTML5, CSS3 (Modern Flexbox & Grid), Vanilla ES6+ JavaScript.
 - **Typography & Icons:** Space Grotesk, Plus Jakarta Sans, FontAwesome 6.5.
-- **Data Persistence:** Client-side Web Storage with schema-ready PHP/PDO MySQL support.
+- # **Data Persistence:** Client-side Web Storage with schema-ready PHP/PDO MySQL support.
+
+# Loan Management System
+
+> > > > > > > 18f500268bad369ba964542f83f56330e96a6cd3
