@@ -1,0 +1,6 @@
+CREATE DATABASE IF NOT EXISTS ladle_loan CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;USE ladle_loan;
+CREATE TABLE IF NOT EXISTS users(id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,full_name VARCHAR(100) NOT NULL,email VARCHAR(190) NOT NULL UNIQUE,password_hash VARCHAR(255) NOT NULL,role ENUM('applicant','admin') NOT NULL DEFAULT 'applicant',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS loan_applications(id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,reference_code VARCHAR(24) NOT NULL UNIQUE,user_id BIGINT UNSIGNED NOT NULL,loan_type ENUM('Personal Loan','Home Loan','Education Loan') NOT NULL,requested_amount DECIMAL(12,2) NOT NULL,status ENUM('Received','Under Review','Approved','Rejected') NOT NULL DEFAULT 'Received',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,CONSTRAINT fk_loan_user FOREIGN KEY(user_id) REFERENCES users(id),INDEX(status),INDEX(user_id)) ENGINE=InnoDB;
+-- Create the first admin only after registering a normal account, then run:
+-- UPDATE users SET role='admin' WHERE email='your-admin-email@example.com';
+-- Use a unique admin password. Do not make every user an administrator.
